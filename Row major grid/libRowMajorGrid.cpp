@@ -1,15 +1,19 @@
 #include "libRowMajorr.h"
-
+#include <iostream>
 
  RowMajorGrid::RowMajorGrid():RowMajorGrid(DEFAULT_ROWS,DEFAULT_COLS)
  {
 
  }
+
+ ///Copy constructor
  RowMajorGrid::RowMajorGrid(const RowMajorGrid& otherObj)
  {
-
+    duplicate(otherObj);
 
  }
+
+ ///
  RowMajorGrid::RowMajorGrid(int intRows,int intCols)
  {
     setUp(intRows,intCols,DEFAULT_CHAR);
@@ -39,7 +43,30 @@ int RowMajorGrid::getRows() const
     return _rows;
 }
 
+///Check equality
+RowMajorGrid& RowMajorGrid::operator==(const RowMajorGrid& objRHS)
+{
+    if(_rows != objRHS._rows) return false;
+    if(_cols != objRHS.getCols()) return false;
 
+    for(int r = 0;r < _rows;r++)
+    {
+        for(int c = 0;c < _cols;c++)
+        {
+            if(data[r][c] != objRHS.data[r][c]) return false;
+        }
+    }
+
+    return true;
+
+}
+
+
+///Check inequality
+RowMajorGrid& RowMajorGrid::operator!=(const RowMajorGrid& objRHS)
+{
+
+}
 ///Enforcing the strange
 void RowMajorGrid::enforceRange(int intValue,int intMin,int intMax) const
 {
@@ -74,7 +101,7 @@ void RowMajorGrid::setUp(int intRows,int intCols,char chDefault)
 
     setRows(intRows);
     setCols(intCols);
-
+    vector<Coordinates>tempCoordinates;
 
     data = new char*[_rows];
 
@@ -83,12 +110,23 @@ void RowMajorGrid::setUp(int intRows,int intCols,char chDefault)
         data[r] = new char[_cols];
         for(int c = 0;c < _cols;c++)
         {
+            Coordinates recCord ={r,c};
             data[r][c]=chDefault;
+            tempCoordinates.push_back(recCord);
         }
+
     }
+    vCoord.push_back(tempCoordinates);
 
 }
 
+
+///Destructor
+RowMajorGrid::~RowMajorGrid()
+{
+   freeState();
+
+}
 ///Copy constructor
 void RowMajorGrid::duplicate(const RowMajorGrid& objOther)
 {

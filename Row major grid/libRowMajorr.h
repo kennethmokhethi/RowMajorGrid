@@ -9,6 +9,14 @@ enum Return_Codes
     SUCCESS,
     ERROR_RANGE
 };
+
+struct Coordinates
+{
+    int row;
+    int col;
+};
+
+
 using namespace std;
  class RowMajorGrid
  {
@@ -16,6 +24,7 @@ using namespace std;
          RowMajorGrid();
          RowMajorGrid(const RowMajorGrid& otherObj);
          RowMajorGrid(int intRows,int intCols);
+         ~RowMajorGrid();
 
          ///Mutator methods
          void setRows(int intNumber);
@@ -50,6 +59,7 @@ using namespace std;
         void duplicate(const RowMajorGrid& objOther);
         void freeState();
         void setUp(int intRows,int intCols,char chDefault);
+        vector<Coordinates>vCoord;
         int _rows;
         int _cols;
         char** data;
