@@ -37,6 +37,7 @@ using namespace std;
 
          static const int DEFAULT_ROWS=10;
          static const int DEFAULT_COLS=10;
+         const char DEFAULT_CHAR='\0';
          static const int MAX_ROWS=500;
          static const int MAX_COLS=500;
          static const int MIN_ROWS=5;
@@ -46,6 +47,7 @@ using namespace std;
 
      private:
         void enforceRange(int intValue,int intRows,int intCols) const;
+        void duplicate(const RowMajorGrid& objOther);
         void freeState();
         void setUp(int intRows,int intCols,char chDefault);
         int _rows;
