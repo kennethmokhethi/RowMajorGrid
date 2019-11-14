@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1573715579 source:/home/kenneth/Desktop/GIT/RowMajorGrid/Row major grid/main.cpp
+	<iostream>
+
+1573715950 source:/home/kenneth/Desktop/GIT/RowMajorGrid/Row major grid/libRowMajorGrid.cpp
+
