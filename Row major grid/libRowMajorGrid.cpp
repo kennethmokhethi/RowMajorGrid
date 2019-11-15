@@ -1,5 +1,7 @@
 #include "libRowMajorr.h"
 #include <iostream>
+#include <vector>
+using namespace std;
 
  RowMajorGrid::RowMajorGrid():RowMajorGrid(DEFAULT_ROWS,DEFAULT_COLS)
  {
@@ -44,7 +46,7 @@ int RowMajorGrid::getRows() const
 }
 
 ///Check equality
-RowMajorGrid& RowMajorGrid::operator==(const RowMajorGrid& objRHS)
+bool RowMajorGrid::operator==(const RowMajorGrid& objRHS)
 {
     if(_rows != objRHS._rows) return false;
     if(_cols != objRHS.getCols()) return false;
@@ -63,7 +65,7 @@ RowMajorGrid& RowMajorGrid::operator==(const RowMajorGrid& objRHS)
 
 
 ///Check inequality
-RowMajorGrid& RowMajorGrid::operator!=(const RowMajorGrid& objRHS)
+bool RowMajorGrid::operator!=(const RowMajorGrid& objRHS)
 {
 
 }

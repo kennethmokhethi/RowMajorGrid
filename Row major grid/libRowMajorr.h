@@ -37,8 +37,8 @@ using namespace std;
 
          ///Operator overloading
          RowMajorGrid& operator=(const RowMajorGrid& objRHS);
-         RowMajorGrid& operator==(const RowMajorGrid& objRHS);
-         RowMajorGrid& operator!=(const RowMajorGrid& objRHS);
+         bool operator==(const RowMajorGrid& objRHS);
+         bool operator!=(const RowMajorGrid& objRHS);
          char& operator()(int intRow,int intCol);
          char& operator[](int intIndex);
          friend ostream& operator<<(ostream& objLHS,const RowMajorGrid& objRHS);
